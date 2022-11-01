@@ -41,6 +41,7 @@ public enum  Spell implements Validatable  {
 
     @Override
     public boolean canUse(){
+        return false;
         if (SpellBook.getCurrentSpellBook() != spellBookType){
             return false;
         }
