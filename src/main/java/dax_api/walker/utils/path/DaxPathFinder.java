@@ -162,7 +162,9 @@ public class DaxPathFinder {
     public static Destination[][] getMap() {
         final WalkerTile home = new WalkerTile(new WalkerTile(Web.methods.players.getMyPlayer().getLocation())).toSceneTile();
         Destination[][] map = new Destination[104][104];
-        int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
+
+        int[][] collisionData = Web.methods.client.getCollisionMaps()[Web.methods.game.getPlane()].getFlags();
+        //int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
         if(collisionData == null || collisionData.length < home.getX() || collisionData[home.getX()].length < home.getY()){
             return map;
         }

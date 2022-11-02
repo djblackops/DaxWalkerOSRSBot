@@ -15,7 +15,9 @@ public class CollisionFileMaker {
 
     public static void getCollisionData(){
         try {
-            int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
+
+            int[][] collisionData = Web.methods.client.getCollisionMaps()[Web.methods.game.getPlane()].getFlags();
+            //int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
             if(collisionData == null)
                 return;
             int baseX = Web.methods.game.getBaseX();

@@ -1,6 +1,7 @@
 package dax_api.walker_engine.local_pathfinding;
 
 
+
 import dax_api.shared.helpers.BankHelper;
 import net.runelite.rsb.methods.Web;
 import net.runelite.rsb.wrappers.common.Positionable;
@@ -18,6 +19,7 @@ public class Reachable {
     public Reachable() {
         this(null);
     }
+
 
     private Reachable(WalkerTile homeTile) {
         map = generateMap(homeTile != null ? homeTile : new WalkerTile(Web.methods.players.getMyPlayer().getLocation()));
@@ -166,7 +168,10 @@ public class Reachable {
         boolean[][] traversed = new boolean[104][104];
         WalkerTile[][] parentMap = new WalkerTile[104][104];
         Queue<WalkerTile> queue = new LinkedList<>();
-        int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
+
+        int[][] collisionData = Web.methods.client.getCollisionMaps()[Web.methods.game.getPlane()].getFlags();
+
+        //int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
         if(collisionData == null)
             return null;
 
@@ -235,7 +240,9 @@ public class Reachable {
         boolean[][] traversed = new boolean[104][104];
         WalkerTile[][] parentMap = new WalkerTile[104][104];
         Queue<WalkerTile> queue = new LinkedList<>();
-        int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
+
+        int[][] collisionData = Web.methods.client.getCollisionMaps()[Web.methods.game.getPlane()].getFlags();
+//        int[][] collisionData = Web.methods.walking.getCollisionFlags(Web.methods.client.getPlane());
 
         if(collisionData == null)
             return new WalkerTile[][]{};

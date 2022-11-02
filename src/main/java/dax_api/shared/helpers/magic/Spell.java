@@ -42,24 +42,24 @@ public enum  Spell implements Validatable  {
     @Override
     public boolean canUse(){
         return false;
-        if (SpellBook.getCurrentSpellBook() != spellBookType){
-            return false;
-        }
-        if (requiredLevel > Web.methods.skills.getCurrentLevel(Skill.PRAYER.ordinal())){
-            return false;
-        }
-        if (this == ARDOUGNE_TELEPORT && Web.methods.clientLocalStorage.getVarpValueAt(165) < 30){
-            return false;
-        }
-
-        for (Pair<Integer, RuneElement> pair : recipe){
-            int amountRequiredForSpell = pair.getKey();
-            RuneElement runeElement = pair.getValue();
-            if (runeElement.getCount() < amountRequiredForSpell){
-                return false;
-            }
-        }
-        return true;
+//        if (SpellBook.getCurrentSpellBook() != spellBookType){
+//            return false;
+//        }
+//        if (requiredLevel > Web.methods.skills.getCurrentLevel(Skill.PRAYER.ordinal())){
+//            return false;
+//        }
+//        if (this == ARDOUGNE_TELEPORT && Web.methods.clientLocalStorage.getVarpValueAt(165) < 30){
+//            return false;
+//        }
+//
+//        for (Pair<Integer, RuneElement> pair : recipe){
+//            int amountRequiredForSpell = pair.getKey();
+//            RuneElement runeElement = pair.getValue();
+//            if (runeElement.getCount() < amountRequiredForSpell){
+//                return false;
+//            }
+//        }
+//        return true;
     }
 
 }
